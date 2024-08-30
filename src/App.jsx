@@ -1,14 +1,15 @@
-import { useState } from 'react'
 import './App.css'
-import Navbar from './Navbar/Navbar'
-import Banner from './Banner/Banner'
+import Navbar from './Components/Navbar/Navbar'
+import Banner from './Components/Banner/Banner.jsx'
+import CoinTable from './Components/CoinTable/CoinTable.jsx'
 
 function App() {
 
   return (
     <>
       <Navbar />
-    <Banner/>
+      <Banner />
+      <CoinTable />
     </>
   )
 }
