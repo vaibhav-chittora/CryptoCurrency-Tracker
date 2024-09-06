@@ -5,6 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import { useEffect } from "react";
 import store from "../../zustand/store";
 import HTMLReactParser from "html-react-parser/lib/index";
+import { List } from "react-content-loader";
 
 function CoinDetails(id) {
 
@@ -15,14 +16,10 @@ function CoinDetails(id) {
         queryKey: ['coin', coinId],
         queryFn: () => FetchCoinDetails(coinId)
     })
-    useEffect(() => {
-        console.log(coin);
-    }, [])
-    console.log(coin)
-
     if (isLoading) {
-        return <div>Loading....</div>
+        return <List />
     }
+
     if (isError) {
         return <div>{error.message}</div>
     }
