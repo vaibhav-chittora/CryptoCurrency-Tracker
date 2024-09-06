@@ -3,9 +3,11 @@ import { fetchCoinData } from "../../Services/FetchCoinData";
 import { useQuery } from "@tanstack/react-query";
 import { CurrencyContext } from "../../context/currencyContext";
 import store from "../../zustand/store";
+import { useNavigate } from "react-router-dom";
 
 function CoinTable() {
     const [page, setPage] = useState(1);
+    const navigate = useNavigate()
 
     // const {currency} = useContext(CurrencyContext);
     const { currency } = store();
@@ -29,6 +31,11 @@ function CoinTable() {
         return <div>Error...{error.message}</div>;
     }
 
+    function handleCoinDetails(coinId) {
+        console.log({ coinId }, "Crypto Coin", "Clicked");
+        navigate(`/details/${coinId}`)
+    }
+
     return (
         <div className="my-5 flex flex-col justify-center items-center gap-5 w-[80vw] mx-auto">
             <h1>{currency}</h1>
@@ -48,6 +55,7 @@ function CoinTable() {
                         <div
                             key={coin.id}
                             className="w-full bg-transparent text-white flex py-4 px-2 font-semibold items-center justify-between cursor-pointer"
+                            onClick={() => handleCoinDetails(coin.id)}
                         >
                             <div className="flex items-center justify-start gap-3 basis-[35%]">
                                 <div className="w-[5rem] h-[5rem]">
