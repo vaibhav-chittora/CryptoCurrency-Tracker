@@ -22,11 +22,10 @@ function CoinTable() {
         },
     });
     // console.log(data);
-    // if (isloading) {
-    //     return <div>
-    //         <h1>LOADING.......................</h1>
-    //         Loading...</div>;
-    // }
+    if (isloading) {
+        return <h1>LOADING.......................</h1>
+    }
+    
     if (isError) {
         return <div>Error...{error.message}</div>;
     }

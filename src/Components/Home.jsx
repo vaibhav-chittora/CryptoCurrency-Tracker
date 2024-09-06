@@ -1,11 +1,9 @@
 import Banner from "./Banner/Banner";
-import CoinTable from "./CoinTable/CoinTable";
-import Navbar from "./Navbar/Navbar";
+import CoinTable from "./pages/CoinTable";
 
 function Home() {
     return (
         <>
-            <Navbar />
             <Banner />
             <CoinTable />
         </>

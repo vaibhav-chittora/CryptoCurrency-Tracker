@@ -1,7 +1,5 @@
 import './App.css'
-import CoinDetails from './Components/CoinDetails.jsx/CoinDetails.jsx'
-import Home from './Components/Home.jsx'
-import { Route, Routes, useParams } from 'react-router-dom'
+import Routing from './routes/Routing.jsx'
 // import { useState } from 'react';
 // import { CurrencyContext } from './context/currencyContext';
 
@@ -11,10 +9,7 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/details/:coinId' element={<CoinDetails />} />
-      </Routes>
+      <Routing />
     </>
   )
 }
