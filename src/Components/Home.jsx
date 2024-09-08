@@ -1,5 +1,6 @@
+import { lazy } from "react";
 import Banner from "./Banner/Banner";
-import CoinTable from "./pages/CoinTable";
+const CoinTable = lazy(() => import("./pages/CoinTable"));
 
 function Home() {
     return (

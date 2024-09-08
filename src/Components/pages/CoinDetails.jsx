@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import store from "../../zustand/store";
 import HTMLReactParser from "html-react-parser/lib/index";
 import { List } from "react-content-loader";
+import PageLoader from "../PageLoaders/PageLoader";
 
 function CoinDetails(id) {
 
@@ -17,7 +18,7 @@ function CoinDetails(id) {
         queryFn: () => FetchCoinDetails(coinId)
     })
     if (isLoading) {
-        return <List />
+        return <PageLoader />
     }
 
     // if (isError) {

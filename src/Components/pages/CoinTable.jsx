@@ -4,8 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { CurrencyContext } from "../../context/currencyContext";
 import store from "../../zustand/store";
 import { useNavigate } from "react-router-dom";
-import CoinListLoader from "../PageLoaders/CoinListLoader";
-import { BulletList, Facebook, List } from "react-content-loader";
+import CoinListLoader from "../PageLoaders/PageLoader";
+import { BulletList, Code, Facebook, List } from "react-content-loader";
 import CustomErrorBoundary from "../customErrorBoundary/CustomErrorBoundary";
 
 function CoinTable() {
@@ -26,7 +26,7 @@ function CoinTable() {
     });
     // console.log(data);
     if (isloading) {
-        return <List />
+        return <Code />
     }
 
     // if (isError) {
@@ -54,7 +54,7 @@ function CoinTable() {
             </div>
 
             <div className="flex flex-col w-[80vw] mx-auto">
-                {isloading && <List />}
+                {isloading && <Code />}
                 {data && data.map((coin) => {
                     return (
                         <div
@@ -99,7 +99,7 @@ function CoinTable() {
                 >
                     Next
                 </button>
-                
+
             </div>
         </div>
     );
