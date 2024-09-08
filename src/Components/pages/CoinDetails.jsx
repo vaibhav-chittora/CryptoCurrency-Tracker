@@ -20,10 +20,12 @@ function CoinDetails(id) {
         return <List />
     }
 
+    // if (isError) {
+    //     return <div>{error.message}</div>
+    // }
     if (isError) {
-        return <div>{error.message}</div>
+        return <CustomErrorBoundary />
     }
-
     return (
         <>
             {/* <h1>Coin Details {coinId}</h1> */}

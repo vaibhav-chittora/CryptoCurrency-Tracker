@@ -6,6 +6,7 @@ import store from "../../zustand/store";
 import { useNavigate } from "react-router-dom";
 import CoinListLoader from "../PageLoaders/CoinListLoader";
 import { BulletList, Facebook, List } from "react-content-loader";
+import CustomErrorBoundary from "../customErrorBoundary/CustomErrorBoundary";
 
 function CoinTable() {
     const [page, setPage] = useState(1);
@@ -18,18 +19,21 @@ function CoinTable() {
         queryKey: ["coins", page, currency],
         queryFn: () => fetchCoinData(currency, page),
         time: {
-            cacheTime: 1000 * 60 * 2, // 2 minutes
-            staleTime: 1000 * 60 * 2, // 2 minutes
+            cacheTime: 1000 * 60 * 5, // 5 minutes
+            staleTime: 1000 * 60 * 5, // 5 minutes
             // retry : 2
         },
     });
     // console.log(data);
     if (isloading) {
-        return <List/>
+        return <List />
     }
 
+    // if (isError) {
+    //     return <div>Error...{error.message}</div>;
+    // }
     if (isError) {
-        return <div>Error...{error.message}</div>;
+        return <CustomErrorBoundary />
     }
 
     function handleCoinDetails(coinId) {
@@ -50,7 +54,7 @@ function CoinTable() {
             </div>
 
             <div className="flex flex-col w-[80vw] mx-auto">
-                {isloading && <List/>}
+                {isloading && <List />}
                 {data && data.map((coin) => {
                     return (
                         <div
@@ -95,6 +99,7 @@ function CoinTable() {
                 >
                     Next
                 </button>
+                
             </div>
         </div>
     );

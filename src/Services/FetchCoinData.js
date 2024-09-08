@@ -1,6 +1,6 @@
 import axiosInstance from "../Helpers/axiosInstance"
 
-export async function fetchCoinData(currency='usd', page = 1) {
+export async function fetchCoinData(currency = 'usd', page = 1) {
     const perPage = 10;
 
     try {
@@ -9,7 +9,8 @@ export async function fetchCoinData(currency='usd', page = 1) {
         return response.data
     } catch (error) {
         console.log(error)
-        return null
+        const errorMessage = await error.message
+        return errorMessage
 
     }
 
