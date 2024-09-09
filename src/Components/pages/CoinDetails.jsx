@@ -7,6 +7,7 @@ import store from "../../zustand/store";
 import HTMLReactParser from "html-react-parser/lib/index";
 import { List } from "react-content-loader";
 import PageLoader from "../PageLoaders/PageLoader";
+import CoinInfo from "./CoinInfo";
 
 function CoinDetails(id) {
 
@@ -78,7 +79,7 @@ function CoinDetails(id) {
                 </div>
 
                 <div className="md:w-2/3 w-full ">
-                    {/* <CoinInfoContainer coinId={coinId} /> */}
+                    <CoinInfo coinId={coinId} />
                 </div>
 
             </div>
