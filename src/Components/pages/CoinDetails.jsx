@@ -16,7 +16,12 @@ function CoinDetails(id) {
 
     const { data: coin, isLoading, error, isError } = useQuery({
         queryKey: ['coin', coinId],
-        queryFn: () => FetchCoinDetails(coinId)
+        queryFn: () => FetchCoinDetails(coinId),
+        time: {
+            gcTime: 1000 * 60 * 2,
+            staleTime: 1000 * 60 * 2,
+            // retry:2
+        }
     })
     if (isLoading) {
         return <PageLoader />

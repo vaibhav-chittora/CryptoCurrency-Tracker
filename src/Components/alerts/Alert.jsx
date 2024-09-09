@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Alert({ type }) {
+function Alert({ type="warning" }) {
     return (
         <div role="alert" className={`alert alert-${type} shadow-lg`}>
             <svg

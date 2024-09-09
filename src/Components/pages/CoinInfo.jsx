@@ -56,12 +56,12 @@ function CoinInfo({ coinId }) {
         }
     })
 
-    useEffect(() => {
-        console.log(data);
-        console.log(coinId);
-        console.log(days);
-        console.log(currency);
-    }, [data])
+    // useEffect(() => {
+    //     console.log(data);
+    //     console.log(coinId);
+    //     console.log(days);
+    //     console.log(currency);
+    // }, [data])
 
     if (isLoading) {
         return <PageLoader />
@@ -72,7 +72,7 @@ function CoinInfo({ coinId }) {
     }
 
     if (!data) {
-        return <Alert type={warning} />
+        return <Alert type={Warning} message={'No Data Found'} />
     }
 
     return (
@@ -97,6 +97,8 @@ function CoinInfo({ coinId }) {
                                 label: `Prices in past ${days} ${days > 1 ? 'days' : 'day'} in ${currency.toUpperCase()}`,
                                 data: data.prices.map((coinPrice) => coinPrice[1]),
                                 pointRadius: 1,
+                                mainAspectRatio: true,
+
                                 options: {
                                     responsive: true,
                                 }
@@ -122,7 +124,44 @@ function CoinInfo({ coinId }) {
 
             </div>
 
-          
+            <div className='p-3 my-8'>
+                <h1 className='text-3xl text-center my-5 mb-8'>Market Cap</h1>
+                <div>
+                    <Line data={{
+                        labels: data.total_volumes.map((volume) => {
+                            let date = new Date(volume[0]);
+                            let hour = date.getHours() > 12 ? `${date.getHours() - 12}:${date.getMinutes()} PM` : `${date.getHours()}:${date.getMinutes()} AM`;
+                            return days === 1 ? hour : date.toLocaleDateString();
+                        }),
+                        datasets: [
+                            {
+                                label: `Total Volume Capital in ${currency.toUpperCase()}`,
+                                data: data.total_volumes.map((volume) => volume[1]),
+                                pointRadius: 1,
+                                borderColor: 'orange',
+                                mainAspectRatio: true,
+                                options: {
+                                    responsive: true,
+                                }
+                            }
+                        ]
+                    }}
+                    />
+                </div>
+
+                {/* <div className='flex justify-center mx-auto mt-8'>
+
+                    <select
+                        className="select select-warning w-full max-w-xs"
+                        onChange={handleDayChange}
+                        defaultValue={days}
+                    >
+
+                        {chartData.map((days) => <option key={days.value} value={days.value}>{days.label}</option>)}
+                    </select>
+                </div> */}
+
+            </div>
 
 
         </>
