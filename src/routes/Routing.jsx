@@ -3,14 +3,13 @@ import { Route, Routes } from 'react-router-dom'
 import Layout from '../Components/pages/Layout'
 const Home = lazy(() => import('../Components/Home'))
 const CoinDetails = lazy(() => import('../Components/pages/CoinDetails'))
-import { Code, List } from 'react-content-loader'
 import CustomErrorBoundary from '../Components/customErrorBoundary/CustomErrorBoundary'
 import PageLoader from '../Components/PageLoaders/PageLoader'
 
 function Routing() {
-    useEffect(() => {
-        console.log("vaibhav");
-    })
+    // useEffect(() => {
+    //     console.log("vaibhav");
+    // })
     return (
 
         <CustomErrorBoundary>

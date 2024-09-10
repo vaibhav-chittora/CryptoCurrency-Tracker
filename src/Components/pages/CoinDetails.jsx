@@ -1,11 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import FetchCoinDetails from "../../Services/FetchCoinDetails";
-import Navbar from "../Navbar/Navbar";
-import { useEffect } from "react";
 import store from "../../zustand/store";
 import HTMLReactParser from "html-react-parser/lib/index";
-import { List } from "react-content-loader";
 import PageLoader from "../PageLoaders/PageLoader";
 import CoinInfo from "./CoinInfo";
 

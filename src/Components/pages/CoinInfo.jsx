@@ -1,16 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { FetchCoinHistoricData } from '../../Services/FetchCoinHistoricData';
 import PageLoader from '../PageLoaders/PageLoader';
-import { useParams } from 'react-router-dom';
 import store from '../../zustand/store';
-import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import Alert from '../alerts/Alert';
 import { Warning } from 'postcss';
-
+import { CategoryScale } from 'chart.js';
+import Chart from 'chart.js/auto';
 
 function CoinInfo({ coinId }) {
+    Chart.register(CategoryScale);
 
     const { currency } = store();
     const [days, setDays] = useState(7)
@@ -36,7 +36,7 @@ function CoinInfo({ coinId }) {
     ]);
 
     function handleDayChange(e) {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         const dataSelected = e.target.options[e.target.selectedIndex].value;
         if (dataSelected == 1) {
             setCoinInterval?.('')
@@ -52,16 +52,10 @@ function CoinInfo({ coinId }) {
         time: {
             gcTime: 1000 * 60 * 5,
             staleTime: 1000 * 60 * 5,
-            // retry : 2
+            retry: 2
         }
     })
 
-    // useEffect(() => {
-    //     console.log(data);
-    //     console.log(coinId);
-    //     console.log(days);
-    //     console.log(currency);
-    // }, [data])
 
     if (isLoading) {
         return <PageLoader />
@@ -86,8 +80,8 @@ function CoinInfo({ coinId }) {
                         labels: data.prices.map((coinPrice) => {
                             let date = new Date(coinPrice[0]);
                             let hour = date.getHours() > 12 ? `${date.getHours() - 12}:${date.getMinutes()} PM` : `${date.getHours()}:${date.getMinutes()} AM`;
-                            console.log("date", date);
-                            console.log("hour", hour);
+                            // console.log("date", date);
+                            // console.log("hour", hour);
                             return days === 1 ? hour : date.toLocaleDateString();
                         }),
 

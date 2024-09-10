@@ -1,11 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { fetchCoinData } from "../../Services/FetchCoinData";
 import { useQuery } from "@tanstack/react-query";
-import { CurrencyContext } from "../../context/currencyContext";
 import store from "../../zustand/store";
 import { useNavigate } from "react-router-dom";
-import CoinListLoader from "../PageLoaders/PageLoader";
-import { BulletList, Code, Facebook, List } from "react-content-loader";
+import { Code } from "react-content-loader";
 import CustomErrorBoundary from "../customErrorBoundary/CustomErrorBoundary";
 
 function CoinTable() {
@@ -37,7 +35,7 @@ function CoinTable() {
     }
 
     function handleCoinDetails(coinId) {
-        console.log({ coinId }, "Crypto Coin", "Clicked");
+        // console.log({ coinId }, "Crypto Coin", "Clicked");
         navigate(`/details/${coinId}`)
     }
 
