@@ -1,6 +1,7 @@
 import React from "react";
 import store from "../../zustand/store";
 import { useNavigate } from "react-router-dom";
+import CurrencyList from "./currencyList";
 
 function Navbar() {
 
@@ -14,14 +15,14 @@ function Navbar() {
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
-       
+        
         <a
           className="btn btn-ghost text-xl text-white rounded-md border border-yellow-400"
           onClick={() => redirectToHome()}
         >Crypto Tracker</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        {/* <ul className="menu menu-horizontal px-1">
           <li className='rounded-md border border-yellow-400 mx-3 text-white hover:bg-yellow-400 hover:text-black hover:rounded-md'>
             <a onClick={() => setCurrency('inr')}>INR</a>
           </li>
@@ -29,7 +30,10 @@ function Navbar() {
             <a onClick={() => setCurrency('usd')}>USD</a>
           </li>
 
-        </ul>
+        </ul> */}
+
+        {/*Rendering the list of currencies in dropdown   */}
+        <CurrencyList/>
       </div>
       <div className="navbar-end">
         <a className="btn text-white rounded-md border border-yellow-400 hover:btn-warning hover:text-black">Compare</a>
